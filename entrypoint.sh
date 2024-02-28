@@ -52,6 +52,9 @@ group "feeds update -a"
 ./scripts/feeds update -a
 endgroup
 
+rm -rf feeds/packages/lang/golang
+git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
+
 group "make defconfig"
 make defconfig
 endgroup
