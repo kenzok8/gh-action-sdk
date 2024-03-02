@@ -52,10 +52,11 @@ group "feeds update -a"
 ./scripts/feeds update -a
 endgroup
 
-rm -rf feeds/packages/net/{v2ray-core,v2ray-geodata,v2raya,xray-core}
-
 rm -rf feeds/packages/lang/golang
-git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
+git clone https://github.com/kenzok8/golang -b 1.21 feeds/packages/lang/golang > /dev/null
+
+rm -rf feeds/packages/lang/node
+git clone https://github.com/sbwml/feeds_packages_lang_node-prebuilt -b packages-$feeds_version feeds/packages/lang/node
 
 group "make defconfig"
 make defconfig
