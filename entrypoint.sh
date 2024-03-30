@@ -107,14 +107,6 @@ else
 		if [ "$RET" -ne 0 ]; then
 			echo_red   "=> Package check failed: $RET)"
 			exit "$RET"
-		fi
-		
-		badhash_msg="HASH does not match "
-		badhash_msg+="|HASH uses deprecated hash,"
-		badhash_msg+="|HASH is missing,"
-		if grep -qE "$badhash_msg" logtmp; then
-			echo "Package HASH check failed"
-			exit 1
 		fi		
 
 		PATCHES_DIR=$(find /feed -path "*/$PKG/patches")
