@@ -65,6 +65,19 @@ group "feeds update -a"
 ./scripts/feeds update -a
 endgroup
 
+# Optionally swap the bundled golang feed for a newer one. Older SDKs (e.g.
+# 24.10 ships Go 1.23) can't build packages that require a newer toolchain.
+# Setting GOLANG_REPO replaces feeds/packages/lang/golang in place; Go package
+# Makefiles hardcode `include $(TOPDIR)/feeds/packages/lang/golang/...`, so a
+# parallel feed wouldn't take effect — the directory itself must be replaced.
+if [ -n "$GOLANG_REPO" ]; then
+	group "override golang feed"
+	rm -rf feeds/packages/lang/golang
+	git clone ${GOLANG_BRANCH:+--branch "$GOLANG_BRANCH"} --depth 1 \
+		"$GOLANG_REPO" feeds/packages/lang/golang
+	endgroup
+fi
+
 group "make defconfig"
 make defconfig
 endgroup

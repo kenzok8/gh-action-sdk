@@ -39,6 +39,8 @@ runs:
           --env BUILD_LOG \
           --env EXTRA_FEEDS \
           --env FEEDNAME \
+          --env GOLANG_REPO \
+          --env GOLANG_BRANCH \
           --env IGNORE_ERRORS \
           --env KEY_BUILD \
           --env PRIVATE_KEY \
