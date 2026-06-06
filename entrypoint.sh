@@ -55,7 +55,7 @@ endgroup
 rm -rf feeds/packages/net/{v2ray-core,v2ray-geodata,v2raya,xray-core}
 
 rm -rf feeds/packages/lang/golang
-git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
+git clone -b 1.26 https://github.com/kenzok8/golang feeds/packages/lang/golang
 
 group "make defconfig"
 make defconfig
